@@ -4,4 +4,9 @@
 *.so
 *.pyc
 .idea/
+*.pyx
+*.o
+.DS_Store
+
+perceptron_avakas/module/build/
 merge_db/__pycache__/
