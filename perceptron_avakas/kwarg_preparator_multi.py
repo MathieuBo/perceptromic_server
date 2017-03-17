@@ -256,7 +256,7 @@ class Supervisor:
 
         filename = "perceptromic_job{}".format(id_job)
 
-        path_to_file = "kwargs/{}.p".format(filename)
+        path_to_file = "../../kwargs/{}.p".format(filename)
 
         pickle.dump(kwargs_list, open(path_to_file, "wb"))
 
