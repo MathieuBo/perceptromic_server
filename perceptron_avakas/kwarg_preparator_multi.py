@@ -1,13 +1,12 @@
 import numpy as np
 from itertools import combinations
-from tqdm import tqdm
 import pickle
-from collections import OrderedDict
 from multiprocessing import Pool
+import sys
 
 
 class DataManager(object):
-    def __init__(self, explanans_size, random_size, file_name="dataset_020916",  explanandum_size=3, add_random=True):
+    def __init__(self, explanans_size, random_size, file_name=sys.argv[1],  explanandum_size=3, add_random=True):
 
         self.folder_path = "data"
         self.file_path = "../../{}/{}.txt".format(self.folder_path, file_name)
