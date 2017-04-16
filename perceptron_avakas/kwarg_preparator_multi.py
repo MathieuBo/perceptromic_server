@@ -174,7 +174,11 @@ def job_definition(total_comb):
             end = start + step + total_comb % step + 1 - i
             args.append((start, end))
 
-    return args
+    filename = "job_list"
+
+    path_to_file = "../../kwargs/{}.p".format(filename)
+
+    pickle.dump(args, open(path_to_file, "wb"))
 
 
 def prepare_comb_list(explanans_size=130, combination_size=3):
@@ -260,7 +264,7 @@ class Supervisor:
         pickle.dump(kwargs_list, open(path_to_file, "wb"))
 
 
-def combination_var():
+def combination_var(start_job=None, end_job=None, list_job_generated=False):
 
     print("\n*************************")
     print('Preparing kwarg list...')
@@ -272,7 +276,17 @@ def combination_var():
 
     print("\n")
 
-    list_jobs = job_definition(total_comb=len(s.combination_list))
+    if list_job_generated is not True:
+
+        job_definition(total_comb=len(s.combination_list))
+
+    with open('../../kwargs/list_job', 'rb') as file:
+        all_jobs = pickle.load(file)
+
+    if start_job is None and end_job is None:
+        list_jobs = all_jobs
+    else:
+        list_jobs = all_jobs[start_job, end_job]
 
     list_dict = []
 
